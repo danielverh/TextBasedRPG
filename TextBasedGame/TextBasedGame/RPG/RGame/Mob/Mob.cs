@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RPG.RGame.Mob {
-    public interface Mob {
+    internal interface Mob {
         int Damage { get; }
         int Defense { get; }
         int totalHealth { get; }
         int remainingHealth { get; set; }
         string Name { get; set; }
-        void Attack();
-        void recieveAttack();
+        void Attack(Player.Player _player, Mob _mob);
+        void recieveAttack(Player.Player _player, Mob _mob);
     }
 }

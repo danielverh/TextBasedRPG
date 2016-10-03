@@ -76,6 +76,7 @@
     <Compile Include="RGame\Items\Weapons\Spear.cs" />
     <Compile Include="RGame\Items\Weapons\Sword.cs" />
     <Compile Include="RGame\Items\Weapons\Weapons.cs" />
+    <Compile Include="RGame\Mob\Chicken.cs" />
     <Compile Include="RGame\Mob\Mob.cs" />
     <Compile Include="RGame\Mob\Zombie.cs" />
     <Compile Include="RGame\Places\Places.cs" />
