@@ -83,7 +83,8 @@
     <Compile Include="RGame\Places\Shop.cs" />
     <Compile Include="RGame\Player\Inventory\Inventory.cs" />
     <Compile Include="RGame\Player\Player.cs" />
-    <Compile Include="RGame\Story\Story.cs" />
+    <Compile Include="RGame\Story\IStory.cs" />
+    <Compile Include="RGame\Story\Content\Chapter 1\Quest 1.cs" />
     <Compile Include="Utilities\ConsoleHotKey.cs" />
     <Compile Include="Utilities\Message.cs" />
     <Compile Include="Utilities\Question.cs" />

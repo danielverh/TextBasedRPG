@@ -62,7 +62,8 @@ namespace RPG.RGame.Player
                         SayList(weaponsDescription);
                         break;
                     case 3:
-                        Story.Story.Quest1(this);
+                        Story.Content.Chapter_1.Quest_1 q = new Story.Content.Chapter_1.Quest_1();
+                        q.Execute(this);
                         break;
                     case 4:
                         int res = Ask(new Question("Select an action", "Reset settings", "Change name"));
