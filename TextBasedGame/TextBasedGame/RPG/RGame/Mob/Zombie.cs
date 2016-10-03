@@ -19,11 +19,11 @@ namespace RPG.RGame.Mob {
         public int Defense { get; set; }
         public string Name { get; set; }
 
-        public void Attack(Player.Player _player, Zombie _zombie){
+        public void Attack(Player.Player _player, Mob _zombie){
             _player.Health -= Damage;
         }
 
-        public void recieveAttack(Player.Player _player, Zombie _zombie)
+        public void recieveAttack(Player.Player _player, Mob _zombie)
         {
             remainingHealth -= _player.holdingWeapon.Damage;
         }
