@@ -16,10 +16,11 @@ namespace RPG.RGame.Story
             Message.Pause();
             Chicken ch = new Chicken();
             ch.KillChicken();
-            Message.SendLine("Henk: Good job! I will give you 5 Irco's.");
+            Message.SendLine("Henk: Good job! I will give you 5 Irco's.", ConsoleColor.White);
             _player.Money += 5;
             Message.SendLine("*You completed the quest!*", true, ConsoleColor.Cyan);
             Message.Pause();
+            Console.ForegroundColor = ConsoleColor.Gray;
         }
     }
 }

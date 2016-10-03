@@ -57,20 +57,20 @@ namespace RPG.RGame.Player
             }
             while (true)
             {
-                switch (Ask(new Question("Select an action", "Open shop", "List inventory", "Start debug quest.", "Utilities")))
-                {
-                    case 1:
-                        LoadLocation(new Shop());
-                        break;
-                    case 2:
+                switch (Ask(new Question("Select an action", "Open shop", "List inventory", "Start debug quest.")))
+            {
+                case 1:
+                    LoadLocation(new Shop());
+                    break;
+                case 2:
                         var weaponsDescription = Inventory.WeaponsItems.Select(i => i.Name).ToArray();
                         SayList(weaponsDescription);
-                        break;
-                    case 3:
-                        Story.Quest1(this);
-                        break;
-                }
+                    break;
+                case 3:
+                    Story.Story.Quest1(this);
+                    break;
             }
+        }
         }
         public void LoadLocation(Places.Places place)
         {
