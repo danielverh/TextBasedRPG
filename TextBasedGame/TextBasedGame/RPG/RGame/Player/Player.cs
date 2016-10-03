@@ -1,4 +1,5 @@
-﻿using RPG.RGame.Places;
+﻿using RPG.RGame.Items.Weapons;
+using RPG.RGame.Places;
 using RPG.Utilities;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace RPG.RGame.Player
         /// The players bonus on his weapon damage
         /// </summary>
         public int Strength { get; private set; }
+        public Weapons holdingWeapon { get; set; }
         /// <summary>
         /// Remaining hunger max 10 min 0 (negative is dead)
         /// </summary>
