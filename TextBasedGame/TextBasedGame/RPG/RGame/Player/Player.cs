@@ -56,7 +56,7 @@ namespace RPG.RGame.Player
                     
                     break;
                 case 3:
-                    Story.Quest1(this);
+                    Story.Story.Quest1(this);
                     break;
             }
         }
