@@ -11,7 +11,7 @@ namespace RPG.RGame.Mob {
         int totalHealth { get; }
         int remainingHealth { get; set; }
         string Name { get; set; }
-        void Attack(Player.Player _player, Mob _mob);
-        void recieveAttack(Player.Player _player, Mob _mob);
+        void Attack(Player.Player _player);
+        void recieveAttack(Player.Player _player);
     }
 }

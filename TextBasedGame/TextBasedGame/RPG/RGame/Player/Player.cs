@@ -28,11 +28,12 @@ namespace RPG.RGame.Player
         /// Remaining hunger max 10 min 0 (negative is dead)
         /// </summary>
         public int Hunger { get; private set; }
-        public Inventory.Inventory Inventory { get; set; } 
+        public Inventory.Inventory Inventory { get; set; }
         public int Money { get; set; }
         public Player()
         {
             settings = new Settings();
+            settings.Committed += Settings_Committed;
             Inventory = settings.LoadInventory();
             if (settings.fLaunch)
             {
@@ -42,35 +43,61 @@ namespace RPG.RGame.Player
                 settings.putInt("strength", 1);
                 settings.putInt("money", 100000);
                 settings.Commit();
-                // start new process
-                System.Diagnostics.Process.Start(
-                     Environment.GetCommandLineArgs()[0],
-                     Environment.GetCommandLineArgs()[1]);
-
-                // close current process
-                Environment.Exit(0);
             }
             else
             {
                 UpdateProps();
                 settings.Commit();
+
             }
             while (true)
             {
-                switch (Ask(new Question("Select an action", "Open shop", "List inventory", "Start debug quest.")))
-            {
-                case 1:
-                    LoadLocation(new Shop());
-                    break;
-                case 2:
+                switch (Ask(new Question("Select an action", "Open shop", "List inventory", "Start debug quest.", "Settings")))
+                {
+                    case 1:
+                        LoadLocation(new Shop());
+                        break;
+                    case 2:
                         var weaponsDescription = Inventory.WeaponsItems.Select(i => i.Name).ToArray();
                         SayList(weaponsDescription);
-                    break;
-                case 3:
-                    Story.Story.Quest1(this);
-                    break;
+                        break;
+                    case 3:
+                        Story.Story.Quest1(this);
+                        break;
+                    case 4:
+                        int res = Ask(new Question("Select an action", "Reset settings", "Change name"));
+                        switch (res)
+                        {
+                            case 1:
+                                settings.Reset();
+                                settings = new Settings();
+                                WriteLine("Done. \nRestart to display changes.");
+                                break;
+                            case 2:
+                                settings.putString("name", OpenQuestion("Enter the name: "));
+                                settings.Commit();
+                                settings = new Settings();
+                                this.UpdateProps();
+                                break;
+                            default:
+                                break;
+                        }
+                        break;
+                }
             }
         }
+
+        private void Settings_Committed(object sender, EventArgs e)
+        {
+            UpdateProps();
+        }
+
+        private void Restart()
+        {
+            System.Diagnostics.Process.Start(
+                 Environment.GetCommandLineArgs()[0]);
+
+            Environment.Exit(0);
         }
         public void LoadLocation(Places.Places place)
         {
@@ -86,7 +113,7 @@ namespace RPG.RGame.Player
         }
         public void BuyWeapon(Weapons weapon)
         {
-            if(weapon.Price <= this.Money)
+            if (weapon.Price <= this.Money)
             {
                 settings.putInt("money", Money - weapon.Price);
                 settings.Commit();
