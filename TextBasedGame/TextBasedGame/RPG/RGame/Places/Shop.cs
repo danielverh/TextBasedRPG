@@ -50,7 +50,7 @@ namespace RPG.RGame.Places
             {
                 questions.Add(String.Format("1 {0} for {1}!", f.Name, f.Price));
             }
-            Ask(new Question("What kind of food do you wanna buy?", questions.ToArray()));
+            int index = Ask(new Question("What kind of food do you wanna buy?", questions.ToArray())) - 1;
         }
         public void ListItems(List<Weapons> weapons)
         {
@@ -59,7 +59,11 @@ namespace RPG.RGame.Places
             {
                 questions.Add(String.Format("{0} for {1}!\n  More info:\n   - Damage: {2}\n   - Item Health: {3}", f.Name, f.Price, f.Damage, f.totalHealth));
             }
-            Ask(new Question("What kind of weapon do you wanna buy?", questions.ToArray()));
+            int index = Ask(new Question("What kind of weapon do you wanna buy?", questions.ToArray())) - 1;
+            if (Confirm())
+            {
+                player.BuyWeapon(weapons[index]);
+            }
         }
         public void ListItems(List<Tool> tools)
         {
@@ -68,7 +72,7 @@ namespace RPG.RGame.Places
             {
                 questions.Add(String.Format("{0} for {1}!\n  More info:\n   - Critical for: {2}\n   - Item Health: {3}", f.Name, f.Price, f.Critical.ToString(), f.totalHealth));
             }
-            Ask(new Question("What kind of tool do you wanna buy?", questions.ToArray()));
+            int index = Ask(new Question("What kind of tool do you wanna buy?", questions.ToArray())) - 1;
         }
     }
 }
