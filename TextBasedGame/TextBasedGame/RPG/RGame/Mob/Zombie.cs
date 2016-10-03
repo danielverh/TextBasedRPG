@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RPG.RGame.Mob {
-    internal class Zombie : Mob {
+    public class Zombie : Mob {
         public Zombie() {
             Damage = 5;
             totalHealth = 25;
@@ -21,15 +21,11 @@ namespace RPG.RGame.Mob {
 
         public void Attack (Player.Player _player, Zombie _zombie){
             _player.Health -= Damage;
-
         }
 
-        public void Attack()
+        public void recieveAttack(Player.Player _player, Zombie _zombie)
         {
-        }
-
-        public void recieveAttack()
-        {
+            remainingHealth -= Weapons.Damage;
         }
     }
 }
