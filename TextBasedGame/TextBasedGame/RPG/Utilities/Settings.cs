@@ -5,6 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using RPG.RGame.Player.Inventory;
+using RPG.RGame.Items.Food;
+using RPG.RGame.Items.Weapons;
+using RPG.RGame.Items.Tools;
 
 namespace RPG.Utilities
 {
@@ -137,6 +141,24 @@ namespace RPG.Utilities
             public Dictionary<string, string> strings = new Dictionary<string, string>();
             public Dictionary<string, bool> booleans = new Dictionary<string, bool>();
             public Dictionary<string, int> integers = new Dictionary<string, int>();
+            public List<Food> FoodItems = new List<Food>();
+            public List<Weapons> WeaponsItems = new List<Weapons>();
+            public List<Tool> ToolItems = new List<Tool>();
+        }
+        internal Inventory LoadInventory()
+        {
+            Inventory inventory = new Inventory();
+            inventory.FoodItems = properties.FoodItems;
+            inventory.WeaponsItems = properties.WeaponsItems;
+            inventory.ToolItems = properties.ToolItems;
+            return inventory;
+        }
+        internal void SaveInventory(Inventory inventory)
+        {
+            properties.FoodItems = inventory.FoodItems;
+            properties.WeaponsItems = inventory.WeaponsItems;
+            properties.ToolItems = inventory.ToolItems;
+            Commit();
         }
     }
 }

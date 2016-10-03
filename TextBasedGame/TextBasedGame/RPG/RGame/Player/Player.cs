@@ -33,21 +33,32 @@ namespace RPG.RGame.Player
         public Player()
         {
             settings = new Settings();
-            Inventory = new Inventory.Inventory();
+            Inventory = settings.LoadInventory();
             if (settings.fLaunch)
             {
                 settings.putString("name", OpenQuestion("Hi, What is your name? "));
                 settings.putInt("health", 100);
                 settings.putInt("hunger", 10);
                 settings.putInt("strength", 1);
-                settings.putInt("money", 100);
+                settings.putInt("money", 100000);
             }
             else
             {
                 UpdateProps();
             }
             settings.Commit();
-            LoadLocation(new Shop());
+            switch(Ask(new Question("Select an action", "Open shop", "List inventory","Start debug quest.")))
+            {
+                case 1:
+                    LoadLocation(new Shop());
+                    break;
+                case 2:
+                    
+                    break;
+                case 3:
+                    Story.Quest1(this);
+                    break;
+            }
         }
         public void LoadLocation(Places.Places place)
         {
@@ -60,6 +71,21 @@ namespace RPG.RGame.Player
             Strength = settings.getInt("strength");
             Hunger = settings.getInt("hunger");
             Money = settings.getInt("money");
+        }
+        public void BuyWeapon(Weapons weapon)
+        {
+            if(weapon.Price <= this.Money)
+            {
+                settings.putInt("money", Money - weapon.Price);
+                settings.Commit();
+                this.Inventory.WeaponsItems.Add(weapon);
+                settings.SaveInventory(Inventory);
+                WriteLine(String.Format("Bought {0} for {1}$", weapon.Name, weapon.Price));
+            }
+            else
+            {
+                WriteLine(String.Format("Not enough money to buy {0} for {1}$", weapon.Name, weapon.Price));
+            }
         }
     }
 }

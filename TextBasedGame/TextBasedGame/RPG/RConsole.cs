@@ -16,7 +16,7 @@ namespace RPG
     {
         private static bool _first = true;
         private const int sleep = 20;
-
+        private const bool mute = true;
         static void Main(string[] args)
         {
             //Sets the hotkey(s):
@@ -59,7 +59,7 @@ namespace RPG
             foreach (char c in text)
             {
                 Console.Write(c);
-                if (i == 8)
+                if (i == 8 && !mute)
                 {
                     sound.Play();
                     i = 0;
@@ -131,6 +131,10 @@ namespace RPG
         public static void Clear()
         {
             Console.Clear();
+        }
+        public static void SayList()
+        {
+
         }
     }
 }
