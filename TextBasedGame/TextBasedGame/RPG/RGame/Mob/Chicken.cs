@@ -30,5 +30,9 @@ namespace RPG.RGame.Mob {
                 Message.SendLine("Choock, choock!", ConsoleColor.Red);               
             }
         }
+
+        public void KillChicken() {
+            Message.SendLine("Choock Choock!", ConsoleColor.Red);
+        }
     }
 }
