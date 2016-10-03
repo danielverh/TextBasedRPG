@@ -208,5 +208,9 @@ namespace RPG
         {
             SayList(str_enum.ToArray());
         }
+
+        public static void Wait(int _time) {
+            Thread.Sleep(_time);
+        }
     }
 }
