@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextBasedGame
+namespace RPG.RGame.Story
 {
-    class Program
+    public class Story
     {
-        static void Main(string[] args)
-        {
-        }
+
     }
 }
