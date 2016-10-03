@@ -81,7 +81,6 @@
     <Compile Include="RGame\Mob\Zombie.cs" />
     <Compile Include="RGame\Places\Places.cs" />
     <Compile Include="RGame\Places\Shop.cs" />
-    <Compile Include="RGame\Player\Inventory\IMS.cs" />
     <Compile Include="RGame\Player\Inventory\Inventory.cs" />
     <Compile Include="RGame\Player\Player.cs" />
     <Compile Include="RGame\Story\Story.cs" />

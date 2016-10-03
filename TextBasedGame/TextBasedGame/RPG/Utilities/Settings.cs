@@ -18,6 +18,13 @@ namespace RPG.Utilities
     public class Settings
     {
         private string path;
+        public delegate void CommitEventHandler(object sender, EventArgs e);
+        public event CommitEventHandler Committed;
+        protected virtual void OnChanged(EventArgs e)
+        {
+            if (Committed != null)
+                Committed(this, e);
+        }
         /// <summary>
         /// Initializes the settings controller
         /// </summary>
@@ -98,6 +105,8 @@ namespace RPG.Utilities
             {
                 formatter.Serialize(stream,properties);
             }
+            OnChanged(EventArgs.Empty);
+            Reload();
         }
         /// <summary>
         /// (re)loads the settings.

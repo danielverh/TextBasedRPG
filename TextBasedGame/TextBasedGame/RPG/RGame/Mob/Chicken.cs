@@ -4,10 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using RPG.Utilities;
+using static RPG.RConsole;
 
-namespace RPG.RGame.Mob {
-    internal class Chicken : Mob {
-        public Chicken() {
+namespace RPG.RGame.Mob
+{
+    internal class Chicken : Mob
+    {
+        public Chicken()
+        {
             Damage = 0;
             totalHealth = 5;
             remainingHealth = 5;
@@ -20,19 +24,23 @@ namespace RPG.RGame.Mob {
         public int Defense { get; set; }
         public string Name { get; set; }
 
-        public void Attack(Player.Player _player, Mob _chicken) {
+        public void Attack(Player.Player _player)
+        {
             _player.Health -= Damage;
         }
 
-        public void recieveAttack(Player.Player _player, Mob _chicken) {
+        public void recieveAttack(Player.Player _player)
+        {
             remainingHealth -= _player.holdingWeapon.Damage;
-            if (remainingHealth <= 0) {
-                Message.SendLine("Choock, choock!", ConsoleColor.Red);               
+            if (remainingHealth <= 0)
+            {
+                KillChicken();
             }
         }
 
-        public void KillChicken() {
-            Message.SendLine("Choock Choock!", ConsoleColor.Red);
+        public void KillChicken()
+        {
+            WriteLine("Choock Choock!", fColor: ConsoleColor.Red);
         }
     }
 }

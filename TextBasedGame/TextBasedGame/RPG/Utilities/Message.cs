@@ -6,9 +6,10 @@ using System.Threading;
 
 namespace RPG.Utilities
 {
-
+    [Obsolete]
     /// <summary>
     /// This class is used for console messaging.
+    /// <see cref="RPG.RConsole"/> for newer version
     /// </summary>
     public class Message
     {
