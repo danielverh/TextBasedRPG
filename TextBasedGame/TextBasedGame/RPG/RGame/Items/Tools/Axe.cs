@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.RGame.Items.Tools
 {
+    [Serializable]
     public class Axe : Tool
     {
         public Axe()

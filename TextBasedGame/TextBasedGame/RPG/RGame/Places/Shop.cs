@@ -21,27 +21,24 @@ namespace RPG.RGame.Places
         {
             player = _player;
             WriteLine(String.Format("Welcome {0}, to the shop!", player.Name));
-            while (true)
+            WriteLine(String.Format("You have {0}$", player.Money));
+            int result = Ask(new Question("What do you wanna buy?", "Weapons", "Tools", "Food"));
+            if (result != -1)
             {
-                WriteLine(String.Format("You have {0}$", player.Money));
-                int result = Ask(new Question("What do you wanna buy?", "Weapons", "Tools", "Food"));
-                if (result != -1)
+                switch (result)
                 {
-                    switch (result)
-                    {
-                        case 1:
-                            ListItems(Weapons);
-                            break;
-                        case 2:
-                            ListItems(Tools);
-                            break;
-                        case 3:
-                            ListItems(foodItems);
-                            break;
-                    }
+                    case 1:
+                        ListItems(Weapons);
+                        break;
+                    case 2:
+                        ListItems(Tools);
+                        break;
+                    case 3:
+                        ListItems(foodItems);
+                        break;
                 }
-                player.UpdateProps();
             }
+            player.UpdateProps();
         }
         public void ListItems(List<Food> food)
         {

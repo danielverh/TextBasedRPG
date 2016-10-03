@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPG.RGame.Items.Weapons
 {
+    [Serializable]
     public class Spear : Weapons
     {
         private string _name = "Spear";

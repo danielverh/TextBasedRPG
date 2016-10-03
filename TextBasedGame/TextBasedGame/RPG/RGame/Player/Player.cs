@@ -41,24 +41,36 @@ namespace RPG.RGame.Player
                 settings.putInt("hunger", 10);
                 settings.putInt("strength", 1);
                 settings.putInt("money", 100000);
+                settings.Commit();
+                // start new process
+                System.Diagnostics.Process.Start(
+                     Environment.GetCommandLineArgs()[0],
+                     Environment.GetCommandLineArgs()[1]);
+
+                // close current process
+                Environment.Exit(0);
             }
             else
             {
                 UpdateProps();
+                settings.Commit();
             }
-            settings.Commit();
-            switch(Ask(new Question("Select an action", "Open shop", "List inventory","Start debug quest.")))
+            while (true)
+            {
+                switch (Ask(new Question("Select an action", "Open shop", "List inventory", "Start debug quest.")))
             {
                 case 1:
                     LoadLocation(new Shop());
                     break;
                 case 2:
-                    
+                        var weaponsDescription = Inventory.WeaponsItems.Select(i => i.Name).ToArray();
+                        SayList(weaponsDescription);
                     break;
                 case 3:
                     Story.Story.Quest1(this);
                     break;
             }
+        }
         }
         public void LoadLocation(Places.Places place)
         {
