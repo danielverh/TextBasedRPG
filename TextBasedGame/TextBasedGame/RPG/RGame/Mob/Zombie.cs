@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using RPG.RGame.Player;
 
 namespace RPG.RGame.Mob {
     internal class Zombie : Mob {
@@ -19,13 +20,14 @@ namespace RPG.RGame.Mob {
         public int Defense { get; set; }
         public string Name { get; set; }
 
-        public void Attack(Player.Player _player, Zombie _zombie){
+        public void Attack(Player.Player _player, Mob _zombie){
             _player.Health -= Damage;
         }
 
-        public void recieveAttack(Player.Player _player, Zombie _zombie)
+        public void recieveAttack(Player.Player _player, Mob _zombie)
         {
             remainingHealth -= _player.holdingWeapon.Damage;
         }
+
     }
 }
