@@ -7,6 +7,7 @@ using static RPG.RConsole;
 
 namespace RPG.RGame.Items.Food
 {
+    [Serializable]
     public class Apple : Food
     {
         public Apple() {

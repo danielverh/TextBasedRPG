@@ -132,9 +132,13 @@ namespace RPG
         {
             Console.Clear();
         }
-        public static void SayList()
+        public static void SayList(params string[] items)
         {
-
+            for(int i = 0; i < items.Length; i++)
+            {
+                WriteLine(String.Format("{0}. {1}",i ,items[i]));
+            }
         }
+
     }
 }
