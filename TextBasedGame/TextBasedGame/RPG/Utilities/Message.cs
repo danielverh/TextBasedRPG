@@ -4,7 +4,7 @@ using System.IO;
 using System.Media;
 using System.Threading;
 
-namespace TBC
+namespace RPG.Utilities
 {
 
     /// <summary>
