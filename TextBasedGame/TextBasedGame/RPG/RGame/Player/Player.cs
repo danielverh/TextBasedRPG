@@ -59,7 +59,9 @@ namespace RPG.RGame.Player
                         break;
                     case 2:
                         var weaponsDescription = Inventory.WeaponsItems.Select(i => i.Name).ToArray();
-                        SayList(weaponsDescription);
+                        int index = Ask(new Question("Your inventory, select an number for more info.", weaponsDescription)) - 1;
+                        var weapon = Inventory.WeaponsItems[index];
+                        WriteLine(String.Format("This {0} deals {1} damage, and has {2}/{3} usability left", weapon.Name, weapon.Damage, weapon.remainingHealth, weapon.totalHealth));
                         break;
                     case 3:
                         Story.Content.Chapter_1.Quest_1 q = new Story.Content.Chapter_1.Quest_1();
