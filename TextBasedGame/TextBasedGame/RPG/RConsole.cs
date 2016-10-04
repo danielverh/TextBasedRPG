@@ -16,7 +16,7 @@ namespace RPG
     {
         private static bool _first = true;
         public const int sleep = 15;
-        private const bool mute = true;
+        private const bool mute = false;
         static void Main(string[] args)
         {
             //Sets the hotkey(s):
