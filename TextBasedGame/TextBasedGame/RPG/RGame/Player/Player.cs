@@ -59,9 +59,22 @@ namespace RPG.RGame.Player
                         break;
                     case 2:
                         var weaponsDescription = Inventory.WeaponsItems.Select(i => i.Name).ToArray();
-                        int index = Ask(new Question("Your inventory, select an number for more info.", weaponsDescription)) - 1;
+                        int index = Ask(new Question("Your inventory, select a weapons for actions.", weaponsDescription)) - 1;
                         var weapon = Inventory.WeaponsItems[index];
-                        WriteLine(String.Format("This {0} deals {1} damage, and has {2}/{3} usability left", weapon.Name, weapon.Damage, weapon.remainingHealth, weapon.totalHealth));
+                        int ActionIndex = Ask(new Question("Select an action", "Delete", "Info", "Sell"));
+                        switch (ActionIndex)
+                        {
+                            case 1:
+                                WriteLine("Not yet impletemented");
+                                break;
+                            case 2:
+                                WriteLine(String.Format("{0}: Deals {1} damage\nHas {2}/{3} health remaining\nYou bought it for ${4}", weapon.Name, weapon.Damage, weapon.remainingHealth, weapon.totalHealth, weapon.Price));
+                                Pause();
+                                break;
+                            default:
+                                WriteLine("Not implemented");
+                                break;
+                        }
                         break;
                     case 3:
                         Story.Content.Chapter_1.Quest_1 q = new Story.Content.Chapter_1.Quest_1();
