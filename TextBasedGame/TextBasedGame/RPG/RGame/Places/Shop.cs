@@ -22,6 +22,7 @@ namespace RPG.RGame.Places
             player = _player;
             WriteLine(String.Format("Welcome {0}, to the shop!", player.Name));
             WriteLine(String.Format("You have {0}$", player.Money));
+            Pause();
             int result = Ask(new Question("What do you wanna buy?", "Weapons", "Tools", "Food"));
             if (result != -1)
             {
