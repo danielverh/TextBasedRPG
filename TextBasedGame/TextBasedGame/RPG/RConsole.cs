@@ -16,13 +16,20 @@ namespace RPG
     {
         private static bool _first = true;
         public const int sleep = 15;
-        private const bool mute = false;
+        private const bool mute = true;
         static void Main(string[] args)
         {
             //Sets the hotkey(s):
             HotKeyManager.RegisterHotKey(Keys.C, KeyModifiers.Control);
             HotKeyManager.HotKeyPressed += new EventHandler<HotKeyEventArgs>(HotKeyManager_HotKeyPressed);
             StartGame();
+        }
+        public static void Pause()
+        {
+            Console.WriteLine();
+            Write("Press any key to continue...");
+            Console.ReadKey();
+            Clear();
         }
         /// <summary>
         /// Begins the game in RGame\Game.cs <see cref="RPG.RGame.Game"/>
@@ -113,6 +120,7 @@ namespace RPG
         /// <returns>-1 if cancelled by user otherwise the index</returns>
         public static int Ask(Question question, int _sleep = sleep, ConsoleColor bColor = ConsoleColor.Black, ConsoleColor fColor = ConsoleColor.White, bool remote = true)
         {
+            Clear();
             WriteLine(question.QuestionText, _sleep, bColor, fColor);
             WriteLine("(Anwser c to cancel)", _sleep, bColor, fColor);
             for (int i = 0; i < question.Options.Length; i++)
